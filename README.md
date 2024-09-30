@@ -17,7 +17,7 @@ O bot irá servir, de um repositório de mídias digitais curado por seu mantene
     - As @s vão possuir o handler *UF.panfletero.piratariaonline.dev*, sendo "UF" o estado em questão.
         - Exemplo: *@MG.panfletero.piratariaonline.dev*
     - Por limitações técnicas, por enquanto só será possível se cadastrar para uma cidade por estado.
-- O bot não segue de volta, portanto sua @ precisa permitir receber DMs.
+- **O bot não segue de volta, portanto sua @ precisa permitir receber DMs.**
     - Na interface do Bluesky, em *"Configurações"*, escolha *"Configurações de chat"* e na sessão *"Permitir mensagens de"*, escolha *"Usuário que eu sigo"* ou *"Todo mundo"*.
     - Se o bot não puder te responder por questões de configuração, seus comandos serão ignorados.
 	
