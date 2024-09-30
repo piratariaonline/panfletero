@@ -37,8 +37,10 @@ O bot irá servir, de um repositório de mídias digitais curado por seu mantene
 2. ### Como usar o bot:
 - **Os comandos devem ser usados na DM, exceto `NOTICIAS`.**
 - **Cardápio de comandos possíveis:**
+	- `AJUDA`: Use para receber o passo-a-passo para inscrição no bot.
+ 	- `COMANDOS`: Use para receber essa lista de comandos. 
 	- `LISTAR CIDADES`: Use para listar as cidades disponíveis no Estado em uma lista enumerada.
-	- `CIDADE:X`: Use para iniciar a inscrição e escolher UMA cidade da lista criada por `LISTAR CIDADES`.
+	- `CIDADE:X`: Use para realizar a inscrição e escolher UMA cidade da lista criada por `LISTAR CIDADES`.
 	- `FREQUENCIA:X` - Use para definir a frequência com a qual receberá a lista de artigos por dia (de 1 a 3). A 1a rodada ocorre às 7:00, a segunda às 14:00 e a terceira às 21:00.
 	- `PERIODO:DD/MM/YYYY;DD/MM/YYYY`: Use para filtrar os artigos por período; envie duas datas em formato DD/MM/YYYY separadas por ponto-e-vírgula (aceita as palavras `hoje`, `ontem` ou `anteontem` no lugar da data).
 	- `TERMOS:ABC;DEF;GHI...`: Use para filtrar os artigos por palavras chave; envie palavras separadas por ponto-e-vírgula; não use aspas ou outros delimitadores, apenas as palavras.
