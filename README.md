@@ -5,14 +5,13 @@ A nova edição contará com milhares de novas fontes jornalísticas livres, per
 
 ## Proposta
 
-O bot irá servir, de um repositório de mídias digitais curado por seu mantenedor, links para artigos publicados por essas mídias, sob demanda, utilizando como interface a rede social Bluesky, através de perfis (@s) criados nessa rede para esse propósito. A inscrição, demanda e outras configurações adicionais serão feitas através da função de Chat (DM) do perfil. Os links serão organizados em lista e enviados automaticamente em períodos fixos do dia, todos os dias da semana, de acordo com configurações feitas pelo usuário em interação com o bot, até que a inscrição seja desfeita.
+O bot irá servir, de um repositório de mídias digitais curado por seu mantenedor, links para artigos publicados por essas mídias, sob demanda (através de comandos) e automaticamente, utilizando como interface a rede social Bluesky, através de perfis (@s) criados nessa rede para esse propósito. A demanda e suas configurações serão feitas através da função de Chat (DM) do perfil. Os links serão organizados em posts isolados e enviados automaticamente em períodos fixos do dia, todos os dias da semana.
 
 ## Arquitetura
 
 [Em construção]
 
-## Utilização
-1. ### Como se inscrever no bot
+## Como usar o bot
 - **Cada UF terá uma @ diferente, você poderá seguir as @s que tem interesse.**
     - As @s vão possuir o handler *UF.panfletero.piratariaonline.dev*, sendo "UF" o estado em questão.
         - Exemplo: *@MG.panfletero.piratariaonline.dev*
@@ -20,42 +19,25 @@ O bot irá servir, de um repositório de mídias digitais curado por seu mantene
 - **O bot não segue de volta, portanto sua @ precisa permitir receber DMs.**
     - Na interface do Bluesky, em *"Configurações"*, escolha *"Configurações de chat"* e na sessão *"Permitir mensagens de"*, escolha *"Usuário que eu sigo"* ou *"Todo mundo"*.
     - Se o bot não puder te responder por questões de configuração, seus comandos serão ignorados.
-	
-- **A primeira ação após seguir a @ do bot, é enviar uma DM ao mesmo com o comando `LISTAR CIDADES`** *(veja item da sessão "Como usar o bot").*
-    - O bot retornará uma lista de cidades enumeradas, você deve escolher uma e responder `CIDADE:X`, onde `X` é o número da cidade.
-	- Se `CIDADE:X` não tiver sido executado nenhuma vez, outros comandos serão ignorados (exceto `LISTAR CIDADES` e `ENCERRAR`).
-	- Se uma cidade válida tiver sido selecionada, o bot responde confirmando a inscrição.
-	
-- **Após escolher uma cidade, você já está cadastrado para receber notícias dela.**
-	- Por padrão, você receberá uma lista de links com título e um pequeno resumo (se disponível), de domingo a domingo, 1x ao dia, pela DM.
-	- Argumentos para a escolha da entrega por DM, ao invés da TL:
-		- A DM não possui limite de caracteres, é possível enviar uma longa listagem numa só requisição.
-		- Os rotuladores do Bluesky que monitoram bots são mais sensíveis a comportamento de spam na TL.
-		- A TL ficará reservada para serviços públicos (anúncios [não comerciais], comunicados, futuras implementações como "destaques do dia por região", etc).
-		- É possível criar um feed compacto das 5 noticias mais atuais do dia usando o comando `NOTICIAS` na TL, uma vez por dia *(veja item da sessão "Como usar o bot")*.
-	- Essa decisão pode mudar com o tempo, caso seja avaliada outra abordagem melhor.
-2. ### Como usar o bot:
-- **Os comandos devem ser usados na DM, exceto `NOTICIAS`.**
+- **Os comandos devem ser usados na DM.**
+    - Envie um comando por vez, apenas. Vários comandos encadeados serão ignorados, apenas o primeiro será considerado.
+    - A API pode levar até 15 segundos para responder, seja paciente.
+    - Há um sistema anti-spam, muitos comandos dados sequencialmente ou em intervalos de tempo exato/repetido suspende a atenção do bot ao usuário por algumas horas.
+    - Se o comando for inválido, o bot não responderá nada.
+    - Escreva o comando da forma exata descrita abaixo; isso é necessário para evitar manipulação de seu comportamento.
+    - Qualquer mensagem enviada para o bot na DM que não seja os comandos abaixo, será ignorada.
+    - Qualquer mensagem enviada sem estar seguindo o bot, será ignorada, mesmo que seja um comando.
 - **Cardápio de comandos possíveis:**
-	- `AJUDA`: Use para receber o passo-a-passo para inscrição no bot.
- 	- `COMANDOS`: Use para receber essa lista de comandos. 
-	- `LISTAR CIDADES`: Use para listar as cidades disponíveis no Estado em uma lista enumerada.
-	- `CIDADE:X`: Use para realizar a inscrição e escolher UMA cidade da lista criada por `LISTAR CIDADES`.
-	- `FREQUENCIA:X` - Use para definir a frequência com a qual receberá a lista de artigos por dia (de 1 a 3). A 1a rodada ocorre às 7:00, a segunda às 14:00 e a terceira às 21:00.
-	- `PERIODO:DD/MM/YYYY;DD/MM/YYYY`: Use para filtrar os artigos por período; envie duas datas em formato DD/MM/YYYY separadas por ponto-e-vírgula (aceita as palavras `hoje`, `ontem` ou `anteontem` no lugar da data).
-	- `TERMOS:ABC;DEF;GHI...`: Use para filtrar os artigos por palavras chave; envie palavras separadas por ponto-e-vírgula; não use aspas ou outros delimitadores, apenas as palavras.
-	- `LISTAR FONTES`: Use para listar as mídias disponíveis para a cidade em uma lista enumerada.
-	- `FONTES:X;Y;Z;...`: Use para escolher UMA OU MAIS fontes de artigos; não definir essa configuração faz o bot usar todas as fontes disponíveis, que pode gerar uma lista bem longa dependendo da cidade.
-	- `ENCERRAR`: Use para encerrar a inscrição; o comando limpa todas as configurações e o bot para de enviar noticias. Ao dar unfollow na @ do bot, esse comando é executado automaticamente.
-	- `NOTICIAS`: Use na TL, mencionado o bot numa postagem; ele responde com os 5 links mais atuais da sua cidade, filtrado pelas configurações. Só pode ser usado uma vez por dia. Não funciona se `ENCERRAR` já foi usado ou se `CIDADE:X` nunca foi usado.
-- **Os comandos devem ser escritos isoladamente, um por mensagem, da exata maneira disposta no item acima.**
-	- Se o comando for inválido, o bot não responderá nada.
-	- Se mais de uma palavra for enviada no comando, apenas as primeiras serão consideradas.
-	- O bot despreza caixa alta ou baixa e acentuação no comando, podendo ser escrito de qualquer forma desde que a palavra esteja correta.
-	- Qualquer mensagem enviada para o bot na DM que não seja os comandos acima, será ignorada.
-	- Qualquer mensagem enviada sem estar seguindo o bot, será ignorada, mesmo que seja um comando.
-	- Por limitações técnicas, o bot pode levar até 15 segundos para responder.
-3. ### Como contribuir
+    - `COMANDOS`: Use para receber essa lista de comandos. 
+    - `LISTAR CIDADES`: Use para listar as cidades disponíveis no Estado em uma lista enumerada.
+    - `CIDADE:X;Y;Z...`: Use para configurar o bot para te enviar artigos daquelas cidades quando solicitado (X,Y,Z... = os números das cidades na lista dada por `LISTAR CIDADES`).
+    - `PERIODO:DD/MM;DD/MM`: Use para configurar o bot para filtrar os artigos por período; envie duas datas em formato DD/MM separadas por ponto-e-vírgula (aceita as palavras `hoje`, `ontem` ou `anteontem` no lugar da data). Ano máximo é o ano corrente.
+    - `TERMOS:ABC;DEF;GHI...`: Use para configurar o bot para filtrar artigos por palavras chave; envie palavras separadas por ponto-e-vírgula.
+    - `LISTAR FONTES`: Use para listar as mídias disponíveis para a cidade em uma lista enumerada.
+    - `FONTES:X;Y;Z...`: Use para configurar o bot para filtrar as fontes dos artigos; não definir essa configuração faz o bot usar todas as fontes disponíveis, que pode gerar uma lista bem longa dependendo da(s) cidade(s).
+    - `BUSCAR`: Use para receber a lista de artigos, de acordo com as configurações feitas; A lista pode ser bem grande; se atingir os limites de caracteres, será enviado mais de uma mensagem.
+
+### Como contribuir
 - **Você pode enviar um e-mail para panfleterobot@gmail.com com o título *"COLABORAÇÃO UF"*, trocando UF pelo estado, ou *"COLABORAÇÃO BOT"* para contribuição técnica;**
 - **Cidades**
 	- Envie novas entradas de cidades ou regiões da UF que você julga estar faltando no bot.
