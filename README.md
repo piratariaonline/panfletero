@@ -38,7 +38,7 @@ O bot irá servir, de um repositório de mídias digitais curado por seu mantene
     - `BUSCAR`: Use para receber a lista de artigos, de acordo com as configurações feitas; A lista pode ser bem grande; se atingir os limites de caracteres, será enviado mais de uma mensagem.
 
 ### Como contribuir
-- **Você pode enviar um e-mail para panfleterobot@gmail.com com o título *"COLABORAÇÃO UF"*, trocando UF pelo estado, ou *"COLABORAÇÃO BOT"* para contribuição técnica;**
+- **Você pode enviar um e-mail para panfleterobot@gmail.com com o título *"COLABORAÇÃO UF"*, trocando UF pelo estado.**
 - **Cidades**
 	- Envie novas entradas de cidades ou regiões da UF que você julga estar faltando no bot.
 	- A entrada deve conter o nome completo da cidade conforme inscrito no IBGE.
@@ -51,9 +51,8 @@ O bot irá servir, de um repositório de mídias digitais curado por seu mantene
 	- A fonte deve ter um nome e um link acessível, de conteúdo público e livre, que não dependa de assinatura ou criação de conta para visualizar conteúdo.
 	- A adição ou revisão da fonte depende de revisão manual e não há prazo para conclusão nem certeza de aceite.
 - **Contrib. Técnica**
-	- Será disponibilizado canal no repositório para envio de PRs.
-	- Só serão revisados PRs relacionados a e-mail enviado conforme o primeiro item dessa sessão.
-	- Inicialmente o repositório não permitirá cadastro de Issue.
+	- Problemas ou sugestões podem ser cadastradas nas Issues do repositório.
+	- Por enquanto não serão aceitos PRs.
 - **Doação**
 	- O bot é comandado por software hospedado em ambiente cloud, que implica em custo por hora e carga de funcionamento.
 	- Qualquer quantia será bem vinda para ajudar no custeio da infraestrutura.
